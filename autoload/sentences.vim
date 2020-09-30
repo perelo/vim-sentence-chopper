@@ -58,7 +58,7 @@ function! s:chop(o,c) abort
           \ '\C\v(%(%([^[:digit:]IVX]|[\])''"])[.]|[' . g:punctuation_marks . ']))%(\s+|([\])''"]))' 
           \ . '/'
           \ .'\1\2\r'
-    exe 'silent keeppatterns' . o . ',' . c . 'substitute/' . subst . '/geI'
+    exe 'silent keeppatterns ' . o . ',' . c . 'substitute/' . subst . '/geI'
 
     let &gdefault = gdefault
   else
