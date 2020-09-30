@@ -40,4 +40,9 @@ function! s:chop(o,c) abort
   let equalprg = ''
   exe 'silent keepjumps normal! ''[='']'
   let &l:equalprg = equalprg
+
+  let formatprg = &l:formatprg
+  let formatprg = ''
+  exe 'silent keepjumps ''[,'']g/^/normal! gqq'
+  let &l:formatprg = formatprg
 endfunction
