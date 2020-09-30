@@ -19,10 +19,8 @@ function! sentences#chop(...) abort
 endfunction
 
 function! s:chop(o,c) abort
-  let o = a:o
-  let c = a:c
 
-  exe o . ',' . c . 'join'
+  exe a:o . ',' . a:c . 'join'
 
   let gdefault = &gdefault
   set gdefault&
@@ -34,12 +32,12 @@ function! s:chop(o,c) abort
         \ '\C\v(%(%([^[:digit:]IVX]|[\])''"])[.]|[' . g:punctuation_marks . ']))%(\s+|([\])''"]))' 
         \ . '/'
         \ .'\1\2\r'
-  exe 'silent keeppatterns ' . o . ',' . c . 'substitute/' . subst . '/geI'
+  exe 'silent keeppatterns substitute/' . subst . '/geI'
 
   let &gdefault = gdefault
 
   let equalprg = &l:equalprg
   let equalprg = ''
-  exe 'silent keepjumps normal! ' . o . '=' . c
+  exe 'silent keepjumps normal! ''[='']'
   let &l:equalprg = equalprg
 endfunction
